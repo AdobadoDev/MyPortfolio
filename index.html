@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lance</title>
+  <meta name="description"
+    content="Lance is a full-stack developer and UI designer based in Cavite, Philippines — building precise, minimal, and functional things for the web." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="#hero" class="sidebar-name">Lance.</a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="#hero" class="nav-link active" data-section="hero"><span class="nav-arrow">→</span>01 — home</a>
+        </li>
+        <li><a href="#about" class="nav-link" data-section="about"><span class="nav-arrow">→</span>02 — about</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects"><span class="nav-arrow">→</span>03 —
+            projects</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills"><span class="nav-arrow">→</span>04 — skills</a>
+        </li>
+        <li><a href="#experience" class="nav-link" data-section="experience"><span class="nav-arrow">→</span>05 —
+            experience</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact"><span class="nav-arrow">→</span>06 — contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Social links -->
+    <div class="sidebar-socials">
+      <a href="https://github.com/AdobadoDev" class="sidebar-social-link mono-label" target="_blank" rel="noopener">gh
+        ↗</a>
+      <a href="mailto:lanceesquilla03@gmail.com" class="sidebar-social-link mono-label">email ↗</a>
+    </div>
+
+    <!-- Local Time Clock -->
+    <div class="sidebar-clock" aria-label="Current time in Philippines">
+      <p class="mono-label clock-label">cavite, ph</p>
+      <p class="clock-time" id="clockTime" aria-live="polite">——:——:——</p>
+      <p class="mono-label clock-tz">UTC +08:00</p>
+    </div>
+
+    <div class="sidebar-footer">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="mono-label theme-label" id="themeLabel">light</span>
+      </button>
+      <div class="status-row">
+        <span class="status-dot"></span>
+        <span class="mono-label">available for work</span>
+      </div>
+      <p class="mono-label sidebar-copy">© 2026 Lance.</p>
+    </div>
+  </aside>
+
+
+  <!-- MOBILE HEADER -->
+  <header class="mobile-header" id="mobileHeader">
+    <a href="#hero" class="mobile-logo">Lance.</a>
+    <div class="mobile-header-right">
+      <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme">
+        <span class="mono-label theme-label" id="mobileThemeLabel">light</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+    <nav>
+      <ul>
+        <li><a href="#hero" class="mobile-nav-link">01 — home</a></li>
+        <li><a href="#about" class="mobile-nav-link">02 — about</a></li>
+        <li><a href="#projects" class="mobile-nav-link">03 — projects</a></li>
+        <li><a href="#skills" class="mobile-nav-link">04 — skills</a></li>
+        <li><a href="#experience" class="mobile-nav-link">05 — experience</a></li>
+        <li><a href="#contact" class="mobile-nav-link">06 — contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu-footer">
+      <div class="status-row"><span class="status-dot"></span><span class="mono-label">available for work</span></div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- HERO -->
+    <section id="hero" class="section section-hero">
+      <div class="halftone-accent"></div>
+      <div class="hero-content">
+        <p class="mono-label animate-in" style="--delay:50ms">00 — hello world</p>
+        <h1 class="display-heading animate-in" style="--delay:120ms">Lance.</h1>
+        <div class="hero-subtitle animate-in" style="--delay:190ms">
+          <span class="mono-label">Future Cloud Engineer</span>
+          <span class="mono-label dot-sep">·</span>
+          <span class="mono-label">Aspiring Cloud Engineer</span>
+          <span class="mono-label dot-sep">·</span>
+          <span class="mono-label">Cavite, ph</span>
+        </div>
+        <p class="hero-bio animate-in" style="--delay:260ms">
+          I build things for the web — with care for craft, attention to detail,
+          and a bias toward clean, functional design that gets out of the way.
+        </p>
+        <div class="hero-cta animate-in" style="--delay:330ms">
+          <a href="#projects" class="btn-primary">view projects →</a>
+          <a href="#contact" class="btn-text">get in touch ↗</a>
+        </div>
+      </div>
+      <div class="scroll-hint animate-in" style="--delay:400ms">
+        <span class="mono-label">scroll</span>
+        <span class="scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="section-header animate-in">
+        <p class="mono-label section-num">02 — about</p>
+        <h2 class="section-title">about me.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text animate-in">
+          <p>I am a 3rd-year student and aspiring Cloud and Software Developer with a strong drive for building
+            scalable applications and digital solutions from scratch.</p>
+          <p>Currently, I am expanding my technical foundation in programming, web development, and cloud computing
+            through hands-on coursework and personal projects.</p>
+          <p>My goal is to grow as an engineer, master modern cloud architectures, and contribute to meaningful projects
+            that solve real-world problems. When I'm not coding, you can find me exploring emerging tech trends and
+            continuously
+            leveling up my skills through online tutorials and independent builds.</p>
+        </div>
+        <div class="about-right animate-in">
+          <div class="profile-photo-wrap">
+            <img src="profile.jpg" alt="Lance — Full-Stack Developer" class="profile-photo" width="320" height="320" />
+            <div class="profile-photo-dots" aria-hidden="true"></div>
+          </div>
+          <div class="about-meta">
+            <div class="meta-row">
+              <p class="mono-label">currently</p>
+              <p>3rd-year BSIT Student</p>
+            </div>
+            <div class="meta-row">
+              <p class="mono-label">location</p>
+              <p>Cavite, Philippines</p>
+            </div>
+            <div class="meta-row">
+              <p class="mono-label">education</p>
+              <p>BS Information Technology</p>
+            </div>
+            <div class="meta-row">
+              <p class="mono-label">interests</p>
+              <p>Cloud · Web Dev · Coffee</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="section-header animate-in">
+        <p class="mono-label section-num">03 — projects</p>
+        <h2 class="section-title">selected work.</h2>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card animate-in" tabindex="0">
+          <div class="project-card-top"><span class="mono-label">2024</span><span
+              class="tag tag-featured">featured</span></div>
+          <h3 class="project-title">FLE Mart</h3>
+          <p class="project-desc">A modern and user-friendly e-commerce web application where users can browse products,
+            manage wishlists, and shop online seamlessly.</p>
+          <div class="project-tags"><span class="tag">html</span><span class="tag">css</span><span
+              class="tag">js</span><span class="tag">design-system</span></div>
+          <a href="https://esquillafrancislancelot-bsit-12a3.netlify.app/" class="project-link mono-label">view project
+            ↗</a>
+        </article>
+        <article class="project-card animate-in" tabindex="0">
+          <div class="project-card-top"><span class="mono-label">2026/span></div>
+          <h3 class="project-title">LazaShap Web App</h3>
+          <p class="project-desc"> A clean, minimalist online store interface designed for fast product discovery,
+            category filtering, and checkout flows.</p>
+          <div class="project-tags"><span class="tag">Figma</span>
+            <a href="#" class="project-link mono-label">view project ↗</a>
+        </article>
+        <article class="project-card animate-in" tabindex="0">
+          <div class="project-card-top"><span class="mono-label">2026</span></div>
+          <h3 class="project-title">Lancify Mobile App</h3>
+          <p class="project-desc"> A minimalist mobile e-commerce UI concept with intuitive product exploration, smart
+            cart management, and modern aesthetics.</p>
+          <div class="project-tags"><span class="tag">Figma</span></div>
+          <a href="https://www.figma.com/design/rDPmkAAqQOrpExLoH2JtaI/Untitled?t=QDL6HiDlJ0Fk2P1c-1"
+            class="project-link mono-label">view project ↗</a>
+        </article>
+        <article class="project-card animate-in" tabindex="0">
+          <div class="project-card-top"><span class="mono-label">2024</span></div>
+          <h3 class="project-title">datastream</h3>
+          <p class="project-desc">Real-time data visualization dashboard for system metrics. PostgreSQL, WebSockets, and
+            D3.js under the hood.</p>
+          <div class="project-tags"><span class="tag">react</span><span class="tag">d3.js</span><span
+              class="tag">postgresql</span></div>
+          <a href="https://www.figma.com/design/9QLFkAbsCKOzWOdWrcNY8P/Untitled?node-id=0-1&t=QDL6HiDlJ0Fk2P1c-1"
+            class="project-link mono-label">view project ↗</a>
+        </article>
+        <article class="project-card animate-in" tabindex="0">
+          <div class="project-card-top"><span class="mono-label">2024</span></div>
+          <h3 class="project-title">authkit</h3>
+          <p class="project-desc">Drop-in authentication for Node.js. JWT, sessions, OAuth, and 2FA. Zero magic, zero
+            surprises.</p>
+          <div class="project-tags"><span class="tag">node.js</span><span class="tag">typescript</span><span
+              class="tag">security</span></div>
+          <a href="#" class="project-link mono-label">view project ↗</a>
+        </article>
+        <article class="project-card animate-in" tabindex="0">
+          <div class="project-card-top"><span class="mono-label">2023</span></div>
+          <h3 class="project-title">shopboard</h3>
+          <p class="project-desc">E-commerce admin dashboard with inventory management, order tracking, and sales
+            analytics for a local retailer.</p>
+          <div class="project-tags"><span class="tag">next.js</span><span class="tag">prisma</span><span
+              class="tag">vercel</span></div>
+          <a href="#" class="project-link mono-label">view project ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="section-header animate-in">
+        <p class="mono-label section-num">04 — skills</p>
+        <h2 class="section-title">toolkit.</h2>
+      </div>
+      <div class="skills-grid animate-in">
+        <div class="skill-group">
+          <p class="mono-label skill-cat">languages</p>
+          <div class="skill-tags"><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">
+              SQL</span> <span class="tag">PHP</span></div>
+        </div>
+        <div class="skill-group">
+          <p class="mono-label skill-cat">frontend</p>
+          <div class="skill-tags"><span class="tag">React</span><span class="tag">Next.js</span><span
+              class="tag">Vue.js</span><span class="tag">Svelte</span><span class="tag">Three.js</span><span
+              class="tag">CSS / HTML</span></div>
+        </div>
+        <div class="skill-group">
+          <p class="mono-label skill-cat">backend</p>
+          <div class="skill-tags"><span class="tag">Node.js</span><span class="tag">Express</span><span
+              class="tag">Fastify</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span
+              class="tag">Prisma</span></div>
+        </div>
+        <div class="skill-group">
+          <p class="mono-label skill-cat">tools & design</p>
+          <div class="skill-tags"><span class="tag">Git</span><span class="tag">Docker</span><span
+              class="tag">Vercel</span><span class="tag">Figma</span><span class="tag">Linux</span><span
+              class="tag">Vim</span> <span class="tag">Netlify</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="section-header animate-in">
+        <p class="mono-label section-num">05 — experience</p>
+        <h2 class="section-title">timeline.</h2>
+      </div>
+      <div class="experience-list">
+        <article class="exp-item animate-in">
+          <div class="exp-meta">
+            <p class="mono-label">2026 — present</p>
+          </div>
+          <div class="exp-body">
+            <h3 class="exp-role">3rd Year IT Student</h3>
+            <p class="mono-label exp-company">National College of Science and Technology</p>
+            <p class="exp-desc">Engaging in extensive academic research, literary critiques, technical or creative
+              writing projects, and possibly editing school publications or student papers.</p>
+          </div>
+        </article>
+        <hr class="divider" />
+        <article class="exp-item animate-in">
+          <div class="exp-meta">
+            <p class="mono-label">2025 — 2026</p>
+          </div>
+          <div class="exp-body">
+            <h3 class="exp-role">2nd Year IT Student </h3>
+            <p class="mono-label exp-company">National College of Science and Technology</p>
+            <p class="exp-desc">Developing advanced proficiency in professional writing, public speaking, text analysis,
+              and participating in literature-based group presentations.</p>
+          </div>
+        </article>
+        <hr class="divider" />
+        <article class="exp-item animate-in">
+          <div class="exp-meta">
+            <p class="mono-label">2024 — 2025</p>
+          </div>
+          <div class="exp-body">
+            <h3 class="exp-role">1st Year IT Student</h3>
+            <p class="mono-label exp-company">National College of Science and Technology</p>
+            <p class="exp-desc">Transitioning to college-level academic writing, enhancing reading comprehension, and
+              mastering essay structuring and research basics.</p>
+          </div>
+        </article>
+        <hr class="divider" />
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-contact">
+      <div class="halftone-accent halftone-contact"></div>
+      <div class="section-header animate-in">
+        <p class="mono-label section-num">06 — contact</p>
+        <h2 class="section-title display-xl">let's talk.</h2>
+      </div>
+      <div class="contact-body animate-in">
+        <p class="contact-intro">I'm currently available for freelance projects and full-time opportunities. If you have
+          something interesting in mind, I'd love to hear about it.</p>
+        <a href="mailto:lanceesquilla03@gmail.com" class="contact-email">hello.lance.dev↗</a>
+        <div class="social-links">
+          <a href="https://github.com/AdobadoDev" class="social-link mono-label">github ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
