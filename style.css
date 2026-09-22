@@ -661,7 +661,8 @@ a:hover {
     transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.profile-photo-wrap:hover .profile-photo {
+/* JS head-tracking overrides this hover rule when active */
+.profile-photo-wrap:not(.js-tracking):hover .profile-photo {
   transform: scale(1.04);
 }
 

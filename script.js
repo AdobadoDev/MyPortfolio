@@ -47,10 +47,10 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () 
     // Format to PH timezone
     const timeStr = now.toLocaleTimeString("en-PH", {
       timeZone: "Asia/Manila",
-      hour:     "2-digit",
-      minute:   "2-digit",
-      second:   "2-digit",
-      hour12:   false,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
     });
     clockEl.textContent = timeStr; // e.g. "19:32:54"
   }
@@ -147,17 +147,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Build an ordered array of { id, top } for scroll-position fallback
   function getSectionTops() {
     return Array.from(sections).map(s => ({
-      id:  s.getAttribute("id"),
+      id: s.getAttribute("id"),
       top: s.getBoundingClientRect().top + window.scrollY,
     }));
   }
 
   // Scroll-position based — used as fallback & bottom-of-page guard
   function updateNavByScroll() {
-    const scrollY      = window.scrollY;
-    const windowH      = window.innerHeight;
-    const docH         = document.documentElement.scrollHeight;
-    const atBottom     = scrollY + windowH >= docH - 80; // 80px buffer
+    const scrollY = window.scrollY;
+    const windowH = window.innerHeight;
+    const docH = document.documentElement.scrollHeight;
+    const atBottom = scrollY + windowH >= docH - 80; // 80px buffer
 
     if (atBottom) {
       // Force-highlight the last section (Contact) when at the bottom
@@ -201,7 +201,103 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+}); // end DOMContentLoaded
 
+/* ---------- PROFILE PHOTO — 3D HEAD TRACKING ----------
+   The photo tilts in 3D to follow the mouse cursor,
+   giving the illusion that Lance is looking at you.
+   On mobile (no hover/cursor), the effect is skipped.
+-------------------------------------------------------- */
+document.addEventListener("DOMContentLoaded", function initHeadTracking() {
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) return;
+
+  // Skip on touch-only devices
+  if (window.matchMedia("(hover: none)").matches) return;
+
+  const wrap = document.querySelector(".profile-photo-wrap");
+  const photo = document.querySelector(".profile-photo");
+  if (!wrap || !photo) return;
+
+  // Mark wrap so CSS hover scale doesn't fight with JS tracking
+  wrap.classList.add("js-tracking");
+
+  // Config
+  const MAX_TILT = 14;   // max degrees of rotation
+  const MAX_SHIFT = 6;   // max px translate for inner photo
+  const EASE = 0.08;     // lerp speed (0 = frozen, 1 = instant)
+
+  let targetRX = 0, targetRY = 0;
+  let currentRX = 0, currentRY = 0;
+  let rafId = null;
+  let isHovering = false;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function animate() {
+    currentRX = lerp(currentRX, targetRX, EASE);
+    currentRY = lerp(currentRY, targetRY, EASE);
+
+    // Outer wrap tilts in 3D
+    wrap.style.transform = `perspective(600px) rotateX(${currentRX}deg) rotateY(${currentRY}deg) scale3d(1.02,1.02,1.02)`;
+
+    // Inner photo shifts slightly in opposite direction (parallax depth)
+    const shiftX = (currentRY / MAX_TILT) * MAX_SHIFT;
+    const shiftY = -(currentRX / MAX_TILT) * MAX_SHIFT;
+    photo.style.transform = `translate(${shiftX}px, ${shiftY}px) scale(1.05)`;
+
+    // Dynamic shadow follows tilt direction
+    const shadowX = (currentRY / MAX_TILT) * 16;
+    const shadowY = (currentRX / MAX_TILT) * 16;
+    wrap.style.boxShadow = `${shadowX}px ${shadowY}px 40px rgba(0,0,0,0.22)`;
+
+    if (
+      isHovering ||
+      Math.abs(currentRX - targetRX) > 0.01 ||
+      Math.abs(currentRY - targetRY) > 0.01
+    ) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      rafId = null;
+    }
+  }
+
+  function startLoop() {
+    if (!rafId) rafId = requestAnimationFrame(animate);
+  }
+
+  document.addEventListener("mousemove", (e) => {
+    const rect = wrap.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Normalise mouse position relative to photo center: -1 to +1
+    const nx = (e.clientX - centerX) / (window.innerWidth / 2);
+    const ny = (e.clientY - centerY) / (window.innerHeight / 2);
+
+    // Clamp to ±1 and map to tilt degrees
+    targetRY = Math.max(-1, Math.min(1, nx)) * MAX_TILT;
+    targetRX = -Math.max(-1, Math.min(1, ny)) * MAX_TILT;
+
+    startLoop();
+  });
+
+  wrap.addEventListener("mouseenter", () => { isHovering = true; startLoop(); });
+  wrap.addEventListener("mouseleave", () => {
+    isHovering = false;
+    // Smoothly return to neutral when cursor leaves
+    targetRX = 0;
+    targetRY = 0;
+    startLoop();
+  });
+
+  // Performance hints
+  wrap.style.willChange = "transform";
+  photo.style.willChange = "transform";
+  wrap.style.transformStyle = "preserve-3d";
+
+  // CRITICAL: Remove CSS transform transitions — they fight with the rAF loop
+  // and make the photo lag / not respond to cursor properly
+  photo.style.transition = "filter 500ms ease";
+  wrap.style.transition = "box-shadow 300ms ease, border-color 200ms ease";
 });
-
-
