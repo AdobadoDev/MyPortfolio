@@ -301,3 +301,69 @@ document.addEventListener("DOMContentLoaded", function initHeadTracking() {
   photo.style.transition = "filter 500ms ease";
   wrap.style.transition = "box-shadow 300ms ease, border-color 200ms ease";
 });
+
+/* ---------- HOVER SOUND (Web Audio API) ---------- */
+(function initHoverSound() {
+  const KEY  = "lance-sound";
+  let ac     = null;
+  let muted  = localStorage.getItem(KEY) === "off";
+  let last   = null; // prevent re-triggering on same element
+
+  // async beep — awaits resume before scheduling audio
+  async function beep(freq, vol, dur) {
+    if (muted) return;
+    try {
+      if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)();
+      if (ac.state !== "running") await ac.resume();
+      const now = ac.currentTime;
+      const osc = ac.createOscillator();
+      const env = ac.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+      env.gain.setValueAtTime(vol, now);
+      env.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      osc.connect(env);
+      env.connect(ac.destination);
+      osc.start(now);
+      osc.stop(now + dur + 0.01);
+    } catch (_) {}
+  }
+
+  // cursor:pointer = has a hover effect → play sound
+  // Single document listener — covers ALL hoverable elements automatically
+  document.addEventListener("mouseover", function (e) {
+    const el = e.target;
+    if (el === last) return;
+    last = el;
+    if (window.getComputedStyle(el).cursor === "pointer") {
+      beep(1200, 0.055, 0.022);
+    }
+  });
+
+  document.addEventListener("mousedown", function (e) {
+    if (window.getComputedStyle(e.target).cursor === "pointer") {
+      beep(700, 0.09, 0.032);
+    }
+  });
+
+  // Emoji sync helper
+  function syncEmoji() {
+    ["soundToggle", "mobileSoundToggle"].forEach(id => {
+      const span = document.getElementById(id)?.querySelector(".sound-emoji");
+      if (span) span.textContent = muted ? "🔇" : "🔈";
+    });
+  }
+
+  // Global toggle (called via onclick="window.toggleSound()")
+  window.toggleSound = function () {
+    muted = !muted;
+    localStorage.setItem(KEY, muted ? "off" : "on");
+    syncEmoji();
+    if (!muted) beep(1400, 0.08, 0.04);
+  };
+
+  syncEmoji();
+})();
+
+
+

@@ -55,9 +55,15 @@
     </div>
 
     <div class="sidebar-footer">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span class="mono-label theme-label" id="themeLabel">light</span>
-      </button>
+      <div class="sidebar-controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="mono-label theme-label" id="themeLabel">light</span>
+        </button>
+        <button class="sound-toggle" id="soundToggle" aria-label="Toggle hover sound" title="Toggle hover sound"
+          onclick="window.toggleSound()">
+          <span class="sound-emoji">🔈</span>
+        </button>
+      </div>
       <div class="status-row">
         <span class="status-dot"></span>
         <span class="mono-label">available for work</span>
@@ -73,6 +79,10 @@
     <div class="mobile-header-right">
       <button class="theme-toggle" id="mobileThemeToggle" aria-label="Toggle theme">
         <span class="mono-label theme-label" id="mobileThemeLabel">light</span>
+      </button>
+      <button class="sound-toggle" id="mobileSoundToggle" aria-label="Toggle hover sound" title="Toggle hover sound"
+        onclick="window.toggleSound()">
+        <span class="sound-emoji">🔈</span>
       </button>
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -182,23 +192,24 @@
       </div>
       <div class="projects-grid">
         <article class="project-card animate-in" tabindex="0">
-          <div class="project-card-top"><span class="mono-label">2024</span><span
+          <div class="project-card-top"><span class="mono-label">2025</span><span
               class="tag tag-featured">featured</span></div>
           <h3 class="project-title">FLE Mart</h3>
           <p class="project-desc">A modern and user-friendly e-commerce web application where users can browse products,
             manage wishlists, and shop online seamlessly.</p>
-          <div class="project-tags"><span class="tag">html</span><span class="tag">css</span><span
-              class="tag">js</span><span class="tag">design-system</span></div>
+          <div class="project-tags"><span class="tag">html</span><span class="tag">css</span><span class="tag">js</span>
+          </div>
           <a href="https://esquillafrancislancelot-bsit-12a3.netlify.app/" class="project-link mono-label">view project
             ↗</a>
         </article>
         <article class="project-card animate-in" tabindex="0">
-          <div class="project-card-top"><span class="mono-label">2026/span></div>
+          <div class="project-card-top"><span class="mono-label">2026</span></div>
           <h3 class="project-title">LazaShap Web App</h3>
           <p class="project-desc"> A clean, minimalist online store interface designed for fast product discovery,
             category filtering, and checkout flows.</p>
-          <div class="project-tags"><span class="tag">Figma</span>
-            <a href="#" class="project-link mono-label">view project ↗</a>
+          <div class="project-tags"><span class="tag">Figma</span></div>
+          <a href="https://www.figma.com/design/9QLFkAbsCKOzWOdWrcNY8P/Untitled?node-id=0-1&p=f&t=OtrvO4LUFP8HVfjw-0"
+            class="project-link mono-label">view project ↗</a>
         </article>
         <article class="project-card animate-in" tabindex="0">
           <div class="project-card-top"><span class="mono-label">2026</span></div>
